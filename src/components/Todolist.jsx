@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Form from "src/components/Form";
 import TodoItem from "src/components/TodoItem";
 
@@ -8,11 +8,11 @@ const TodoList = () => {
   const [items, setItems] = useState(
     JSON.parse(localStorage.getItem("TaskList"))
   );
-  const deleteItemHandler = (e) => {
-    setItems((prevItems) => prevItems.filter((item) => item.id !== +e));
-  };
-  const editTaskHandler = (e, id) => {
-  
+  const deleteItemHandler = useCallback(
+    (e) => setItems((prevItems) => prevItems.filter((item) => item.id !== +e)),
+    []
+  );
+  const editTaskHandler = useCallback((e, id) => {
     if (e.target.localName === "p") {
       return;
     }
@@ -21,7 +21,7 @@ const TodoList = () => {
         return item.id !== id ? item : { ...item, text: e.target.value };
       })
     );
-  };
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("TaskList", JSON.stringify(items));
@@ -38,13 +38,13 @@ const TodoList = () => {
     ]);
   };
 
-  const completeHandler = (e) => {
+  const completeHandler = useCallback((e) => {
     setItems((prevItems) =>
       prevItems.map((item) =>
         item.id === e ? { ...item, isCompleted: !item.isCompleted } : item
       )
     );
-  };
+  }, []);
 
   return (
     <>
