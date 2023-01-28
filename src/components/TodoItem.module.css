@@ -1,0 +1,16 @@
+.button {
+  background-color: purple;
+  color: white;
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.button:hover {
+  background-color: rgb(166, 95, 166);
+}
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
