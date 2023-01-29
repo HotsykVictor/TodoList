@@ -27,7 +27,7 @@ const TodoList = () => {
     localStorage.setItem("TaskList", JSON.stringify(items));
   }, [items]);
 
-  const newTaskHandler = (e) => {
+  const newTaskHandler = useCallback((e) => {
     setItems((prevItems) => [
       {
         text: e,
@@ -36,7 +36,7 @@ const TodoList = () => {
       },
       ...prevItems,
     ]);
-  };
+  }, []);
 
   const completeHandler = useCallback((e) => {
     setItems((prevItems) =>

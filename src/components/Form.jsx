@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, memo } from "react";
 
 const Form = ({ onAddNewTask, className }) => {
   const newTaskHandler = (e) => {
@@ -17,4 +17,4 @@ const Form = ({ onAddNewTask, className }) => {
     </form>
   );
 };
-export default Form;
+export default memo(Form);

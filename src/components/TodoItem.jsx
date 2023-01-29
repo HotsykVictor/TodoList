@@ -1,10 +1,8 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import styles from "src/components/TodoItem.module.css";
 const TodoItem = ({ item, onDeleteTask, onEditTask, onComplete }) => {
+
   const [isEditing, setIsEditing] = useState(false);
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  console.log(item.text + "rerendered");
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   const editTaskHandler = (e) => {
     setIsEditing((prev) => !prev);
     onEditTask(e, item.id);
@@ -35,4 +33,4 @@ const TodoItem = ({ item, onDeleteTask, onEditTask, onComplete }) => {
   );
 };
 
-export default TodoItem;
+export default memo(TodoItem);
