@@ -1,12 +1,14 @@
 import { useState, memo } from "react";
 import styles from "src/components/TodoItem.module.css";
-const TodoItem = ({ item, onDeleteTask, onEditTask, onComplete }) => {
 
+const TodoItem = ({ item, onDeleteTask, onEditTask, onComplete }) => {
   const [isEditing, setIsEditing] = useState(false);
+
   const editTaskHandler = (e) => {
     setIsEditing((prev) => !prev);
-    onEditTask(e, item.id);
+    onEditTask(e, isEditing, item.id);
   };
+
   return (
     <li>
       {isEditing ? (
@@ -15,7 +17,7 @@ const TodoItem = ({ item, onDeleteTask, onEditTask, onComplete }) => {
           onBlur={editTaskHandler}
           defaultValue={item.text}
           autoFocus
-        ></textarea>
+        />
       ) : (
         <p
           className={item.isCompleted ? styles.completed : ""}
