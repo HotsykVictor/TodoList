@@ -16,6 +16,7 @@ const TodoItem = ({ item, onDeleteTask, onEditTask, onComplete }) => {
           rows={Math.round(item.text.length / 40) || 1}
           onBlur={editTaskHandler}
           defaultValue={item.text}
+          spellCheck={false}
           autoFocus
         />
       ) : (
@@ -23,6 +24,7 @@ const TodoItem = ({ item, onDeleteTask, onEditTask, onComplete }) => {
           className={item.isCompleted ? styles.completed : ""}
           onDoubleClick={editTaskHandler}
           onClick={() => onComplete(item.id)}
+          spellCheck={false}
         >
           {item.text}
         </p>

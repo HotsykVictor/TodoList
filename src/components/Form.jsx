@@ -15,7 +15,7 @@ const Form = ({ onAddNewTask }) => {
   return (
     <form onSubmit={newTaskHandler} className={className.card}>
       <label>Input your task</label>
-      <input type="text" ref={refButton} />
+      <input type="text" spellCheck={false} ref={refButton} />
       <button className={className.button}>Add new task</button>
     </form>
   );
