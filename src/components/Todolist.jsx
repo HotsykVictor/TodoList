@@ -5,7 +5,7 @@ import styles from "src/components/Todolist.module.css";
 
 const TodoList = () => {
   const [items, setItems] = useState(
-    JSON.parse(localStorage.getItem("TaskList"))
+    JSON.parse(localStorage.getItem("TaskList") || [])
   );
 
   useEffect(() => {
