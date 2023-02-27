@@ -13,7 +13,11 @@ const TodoItem = ({ item, onDeleteTask, onEditTask, onComplete }) => {
     <li>
       {isEditing ? (
         <textarea
-          rows={Math.round(item.text.length / 40) || 1}
+          rows={
+            window.innerWidth < 600
+              ? (item.text.length * 25) / window.innerWidth
+              : Math.round(item.text.length / 40) || 1
+          }
           onBlur={editTaskHandler}
           defaultValue={item.text}
           spellCheck={false}
